@@ -6,6 +6,8 @@
 //  Copyright © 2017 Olufisayo Ayodele. All rights reserved.
 //
 
+//Learning swift from scratch
+
 import Foundation
 
 var number1 : Int
@@ -26,3 +28,9 @@ if (string1 == string2)
 {
     print("they are equal")
 }
+
+var string4 = string1 + string2
+string4 = string1 + "\(number3)"
+
+var arrayExample : [Int] //Arrays are passed by value!!!
+arrayExample = [Int]()
