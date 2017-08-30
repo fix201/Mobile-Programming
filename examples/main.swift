@@ -10,6 +10,21 @@
 
 import Foundation
 
+func setString(_ str : String)
+{
+    print(str)
+}
+
+func setString(str : inout String)
+{
+    str = str + "hello"  //What happens here – Swift won't let you modify this value
+}
+
+var str1 = "Joe "
+setString(str1)
+setString(str: &str1)
+
+
 var number1 : Int
 var number2 : Int = 3
 
@@ -33,4 +48,4 @@ var string4 = string1 + string2
 string4 = string1 + "\(number3)"
 
 var arrayExample : [Int] //Arrays are passed by value!!!
-arrayExample = [Int]()
+arrayExample = [Int]()   //You cannot use [] until an element has been added
