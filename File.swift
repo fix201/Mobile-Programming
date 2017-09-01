@@ -10,5 +10,5 @@ import Foundation
 
 public class Account   //Does not inherit from anyone – standalone class
 {
-    
+    private var name : String = ""
 }
