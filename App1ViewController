@@ -1,0 +1,61 @@
+//
+//  ViewController.swift
+//  FlagQuiz
+//
+//  Created by Student on 9/18/17.
+//  Copyright © 2017 UCA. All rights reserved.
+//
+
+import UIKit
+
+class ViewController: UIViewController {
+
+    @IBOutlet var questionImages: UIImageView!
+    @IBOutlet var answerImages: UIImageView!
+    @IBOutlet var label: UILabel!
+    
+    
+    //private var variables
+    private var questionImagessss = [UIImage]()
+    private var answerImage = [UIImage]()
+    var rand_num : Int;
+    
+    //Initializing quiz object
+    let quiz = Quiz(questionPrefix: "image", answerPrefix: "pic", totalImages: 222)
+    
+    required init?(coder aDecoder: NSCoder)
+    {
+        rand_num = Int(arc4random())%221
+        questionImagessss = [UIImage] ()
+        answerImage = [UIImage] ()
+        super.init(coder: aDecoder)
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view, typically from a nib.
+        questionImages.animationImages = quiz.getQuestionImages()
+        questionImages.animationDuration = TimeInterval((quiz.getQuestionImages()?.count)! * 10)
+        questionImages.animationRepeatCount = -1
+        questionImages.startAnimating()
+        
+        answerImages.animationImages = quiz.getAnswerImages()
+        answerImages.animationDuration = TimeInterval((quiz.getAnswerImages()?.count)! * 1)
+        answerImages.animationRepeatCount = -1
+        answerImages.startAnimating()
+        
+        label.text = "Stuff you wanna put"
+        
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    
+
+
+
+}
+
