@@ -1,0 +1,61 @@
+//
+//  Quiz.swift
+//  FlagQuiz
+//
+//  Created by Student on 9/18/17.
+//  Copyright © 2017 UCA. All rights reserved.
+//
+
+import Foundation
+import UIKit
+
+class Quiz {
+    //Private Variables
+    private var questionPrefix : String
+    private var answerPrefix : String
+    private var totalImages : Int = 222
+    
+    var random : [Int] = []
+    
+    
+    //Constructor
+    public init(questionPrefix : String, answerPrefix : String, totalImages : Int){
+        self.questionPrefix = questionPrefix
+        self.answerPrefix = answerPrefix
+        self.totalImages = totalImages
+        
+        //Random number array initialization
+        for _ in 0...9 {
+            random.append(Int(arc4random_uniform(UInt32(totalImages))))
+        }
+    }
+    
+    //Required Methods
+    public func getQuestionImages()->[UIImage]? {
+        var images :  [UIImage] = []
+        
+        for i in 0...9{
+            images.append(UIImage(named: "image\(random[i]).png")!)
+        }
+        
+        return images
+    }
+    
+    //Function to get random answers
+    public func getAnswerImages()->[UIImage]?{
+        var pics :  [UIImage] = []
+        
+        for i in 0...9{
+            for _ in 0...6{
+                pics.append(UIImage(named: "blank.png")!)
+            }
+        
+            for _ in 0...2 {
+                pics.append(UIImage(named: "pic\(random[i]).png")!)
+                print(random[i])
+                
+            }
+        }
+        return pics
+    }
+}
